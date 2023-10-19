@@ -39,7 +39,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (!fun_var.arg)
 	{
-		fprintf(stderr, "L%d: usage: push integer", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_m();
 		exit(EXIT_FAILURE);
 	}

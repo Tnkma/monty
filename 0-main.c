@@ -71,7 +71,7 @@ int main(int argc, char **argv)
 	input = open_file(argc, argv);
 	_fun_var();
 	read = getline(&fun_var.line, &len, input);
-	while(read == - 1)
+	while(read != - 1)
 	{
 		token = strtok(fun_var.line, delim);
 		if (!token) /* skip empty lines */
@@ -89,6 +89,7 @@ int main(int argc, char **argv)
 			fun_var.arg = strtok(NULL, delim);
 		}
 		f(&fun_var.head, fun_var.count);
+		read = getline(&fun_var.line, &len, input);
 		fun_var.count++;
 	}
 	fclose(input);
