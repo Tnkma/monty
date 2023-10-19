@@ -14,7 +14,7 @@ void _fun_var(void)
 	fun_var.count = 1;
 	fun_var.head = NULL;
 	fun_var.arg = NULL;
-	fun_var.line = NULL;
+	fun_var.line = malloc(1024 * sizeof(char));
 }
 /**
  * free_m - free all
@@ -65,14 +65,13 @@ int main(int argc, char **argv)
 {
 	void (*f)(stack_t **stack, unsigned int line_number);
 	FILE *input;
-	size_t len = 0;
-	ssize_t read;
+	char *read;
 	char *token, *delim = " \t\n";
 
 	input = open_file(argc, argv);
 	_fun_var();
-	read = getline(&fun_var.line, &len, input);
-	while (read != -1)
+	read = fgets(fun_var.line, sizeof(fun_var.line), input);
+	while (read != NULL)
 	{
 		token = strtok(fun_var.line, delim);
 		if (!token) /* skip empty lines */
@@ -82,7 +81,8 @@ int main(int argc, char **argv)
 		f = opcodes(token);
 		if (f == NULL)/* if its not a defined opcode*/
 		{
-			printf("L%d: unknown instruction %s\n", fun_var.count, token);
+			fprintf(stderr,"L%d: unknown instruction %s\n", fun_var.count, token);
+			free_m();
 			exit(EXIT_FAILURE);
 		}
 		if (strcmp(token, "push") == 0)
@@ -90,7 +90,7 @@ int main(int argc, char **argv)
 			fun_var.arg = strtok(NULL, delim);
 		}
 		f(&fun_var.head, fun_var.count);
-		read = getline(&fun_var.line, &len, input);
+		read = fgets(fun_var.line, sizeof(fun_var.line), input);
 		fun_var.count++;
 	}
 	fclose(input);
