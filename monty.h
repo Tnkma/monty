@@ -56,5 +56,7 @@ void push(stack_t **head, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void (*opcodes(char *codes))(stack_t **stack, unsigned int line_number);
+stack_t *add_dnodeint(dlistint_t **head, const int n);
+stack_t *add_dnodeint_end(dlistint_t **head, const int n);
 
 #endif
