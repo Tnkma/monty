@@ -14,10 +14,10 @@ stack_t *add_dnodeint(dlistint_t **head, const int n)
 	stack_t *h;
 
 
-	newnode = malloc(sizeof(dlistint_t));
+	newnode = malloc(sizeof(stack_t));
 	if (newnode == NULL)
 	{
-		return (NULL);
+		exit(EXIT_FAILURE);
 	}
 	/* set the prev pointer to NULL */
 	newnode->prev = NULL;
@@ -49,14 +49,14 @@ stack_t *add_dnodeint(dlistint_t **head, const int n)
  * Return: the new element or NULL id it failed
  */
 
-stack_t *add_dnodeint_end(dlistint_t **head, const int n)
+stack_t *add_dnodeint_end(stack_t **head, const int n)
 {
 	stack_t *endnode, *h;
 
-	endnode = malloc(sizeof(dlistint_t));
+	endnode = malloc(sizeof(stack_t));
 	if (endnode == NULL)
 	{
-		return (NULL);
+		exit(EXIT_FAILURE);;
 	}
 	endnode->n = n;
 	endnode->next = NULL;
