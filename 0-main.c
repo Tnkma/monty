@@ -9,14 +9,15 @@ glo_t fun_var;
  *
  * Return: void since were void
  */
-void _fun_var()
+void _fun_var(void)
 {
 	fun_var.count = 1;
 	fun_var.head = NULL;
 	fun_var.arg = NULL;
 	fun_var.line = NULL;
 }
-/** free_m - free all
+/**
+ * free_m - free all
  *
  *
  * Return: void since we are void
@@ -54,8 +55,8 @@ FILE *open_file(int argc, char **argv)
 
 /**
  * main - the main function
- * argc: the argument count
- * argv: the command line argumnet
+ * @argc: the argument count
+ * @argv: the command line argumnet
  *
  * Return: Always 0 for success
  */
@@ -71,7 +72,7 @@ int main(int argc, char **argv)
 	input = open_file(argc, argv);
 	_fun_var();
 	read = getline(&fun_var.line, &len, input);
-	while(read != - 1)
+	while (read != -1)
 	{
 		token = strtok(fun_var.line, delim);
 		if (!token) /* skip empty lines */

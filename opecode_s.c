@@ -38,7 +38,7 @@ void (*opcodes(char *codes))(stack_t **stack, unsigned int line_number)
 void pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
-	
+
 	if (!tmp)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);

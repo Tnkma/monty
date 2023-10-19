@@ -56,7 +56,7 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 	endnode = malloc(sizeof(stack_t));
 	if (endnode == NULL)
 	{
-		exit(EXIT_FAILURE);;
+		exit(EXIT_FAILURE);
 	}
 	endnode->n = n;
 	endnode->next = NULL;
