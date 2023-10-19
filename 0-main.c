@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "monty.h"
 
 glo_t fun_var;
@@ -22,7 +23,7 @@ void _fun_var()
  */
 void free_m(void)
 {
-	free-dlistint(fun_var.head);
+	free_dlistint(fun_var.head);
 	free(fun_var.line);
 }
 /**
@@ -32,20 +33,20 @@ void free_m(void)
  *
  * Return: the open file
  */
-FILE open_file(int argc, char **argv)
+FILE *open_file(int argc, char **argv)
 {
 	FILE *file;
 
 
-	if (argc == 1 || argc != 2)
+	if (argc != 2)
 	{
-		printf("USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	file = fopen(argv[1], "r");
 	if (!file)
 	{
-		printf("Error: Can't open file %s\n", aegv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	return (file);
@@ -65,12 +66,12 @@ int main(int argc, char **argv)
 	FILE *input;
 	size_t len = 0;
 	ssize_t read;
-	stack_t *stack = NULL;
-	char *token, delim = " \t\n";
+	char *token, *delim = " \t\n";
 
-	input = open_file(argv[1]);
+	input = open_file(argc, argv);
 	_fun_var();
-	while((read = getline(&fun_var.line, &len, input)) == - 1)
+	read = getline(&fun_var.line, &len, input);
+	while(read == - 1)
 	{
 		token = strtok(fun_var.line, delim);
 		if (!token) /* skip empty lines */

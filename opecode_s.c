@@ -12,14 +12,14 @@ void (*opcodes(char *codes))(stack_t **stack, unsigned int line_number)
 	instruction_t opcode_calls[] =	{
 		{"push", push},
 		{"pall", pall},
-		{"pint", pint};
+		{"pint", pint},
 		{NULL, NULL}
 	};
 	int m;
 
 	for (m = 0; opcode_calls[m].opcode; m++)
 	{
-		if (_strcmp(opcode_calls[m].opcode, codes) == 0)
+		if (strcmp(opcode_calls[m].opcode, codes) == 0)
 		{
 			return (opcode_calls[m].f);
 		}
@@ -38,7 +38,13 @@ void (*opcodes(char *codes))(stack_t **stack, unsigned int line_number)
 void pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
-
+	
+	if (!tmp)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		free_m();
+		exit(EXIT_FAILURE);
+	}
 	printf("%d\n", tmp->n);
 }
 

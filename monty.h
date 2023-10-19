@@ -1,10 +1,12 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -49,6 +51,7 @@ typedef struct glo
 	unsigned int count;
 	char *arg;
 	stack_t *head;
+	char *line;
 } glo_t;
 
 extern glo_t fun_var;
@@ -59,4 +62,8 @@ void (*opcodes(char *codes))(stack_t **stack, unsigned int line_number);
 stack_t *add_dnodeint(stack_t **head, const int n);
 stack_t *add_dnodeint_end(stack_t **head, const int n);
 void free_dlistint(stack_t *head);
+void push(stack_t **stack, unsigned int line_number);
+void free_m(void);
+
+
 #endif
