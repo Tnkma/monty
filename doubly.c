@@ -76,3 +76,25 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 	endnode->prev = h;
 	return (endnode);
 }
+#include "lists.h"
+
+/**
+ * free_dlistint - frees all memory allocated
+ * @head: the head of the list
+ *
+ * Return: oid since were void
+ */
+
+void free_dlistint(stack_t *head)
+{
+	if (!head)
+	{
+		return;
+	}
+	while (head->next)
+	{
+		head = head->next;
+		free(head->prev);
+	}
+	free(head);
+}
