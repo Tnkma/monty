@@ -64,6 +64,7 @@ stack_t *add_dnodeint_end(stack_t **head, const int n);
 void free_dlistint(stack_t *head);
 void push(stack_t **stack, unsigned int line_number);
 void free_m(void);
+void pop(stack_t **stack, unsigned int line_number);
 
 
 #endif
