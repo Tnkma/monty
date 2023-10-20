@@ -18,6 +18,11 @@ void (*opcodes(char *codes))(stack_t **stack, unsigned int line_number)
 		{"swap", swap},
 		{"queue", mqueue},
 		{"stack", mstack},
+		{"add", madd},
+		{"sub", msub},
+		{"div", mdiv},
+		{"mul", mmul},
+		{"mod", mmod},
 		{NULL, NULL}
 	};
 	int m;

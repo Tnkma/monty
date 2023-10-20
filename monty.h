@@ -70,6 +70,10 @@ void swap(stack_t **stack, unsigned int line_number);
 void mstack(stack_t **stack, unsigned int line_number);
 void mqueue(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
-
+void madd(stack_t **stack, unsigned int line_count);
+void msub(stack_t **stack, unsigned int line_count);
+void mdiv(stack_t **stack, unsigned int line_count);
+void mmul(stack_t **stack, unsigned int line_count);
+void mmod(stack_t **stack, unsigned int line_count);
 
 #endif
