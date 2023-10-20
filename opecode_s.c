@@ -72,8 +72,7 @@ void pall(stack_t **stack, unsigned int line_number)
 
 	if (current == NULL)
 	{
-		free_m();
-		exit(EXIT_FAILURE);
+		return;
 	}
 	while (current)
 	{
