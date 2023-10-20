@@ -82,7 +82,7 @@ int main(int argc, char **argv)
 		f = opcodes(token);
 		if (f == NULL)/* if its not a defined opcode*/
 		{
-			fprintf(stderr,"L%d: unknown instruction %s\n", fun_var.count, token);
+			fprintf(stderr, "L%d: unknown instruction %s\n", fun_var.count, token);
 			free_m();
 			exit(EXIT_FAILURE);
 		}
