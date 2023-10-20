@@ -94,21 +94,6 @@ int main(int argc, char **argv)
 			}
 			f(&fun_var.head, fun_var.count);
 		}
-<<<<<<< HEAD
-		f = opcodes(token);
-		if (f == NULL)/* if its not a defined opcode*/
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", fun_var.count, token);
-			free_m();
-			exit(EXIT_FAILURE);
-		}
-		if (strcmp(token, "push") == 0)
-		{
-			fun_var.arg = strtok(NULL, delim);
-		}
-		f(&fun_var.head, fun_var.count);
-=======
->>>>>>> 06655cb5d9ae0839a50cc1da369cbec105b43a28
 		read = fgets(fun_var.line, sizeof(fun_var.line), input);
 		fun_var.count++;
 	}
