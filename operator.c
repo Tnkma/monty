@@ -28,7 +28,7 @@ void msub(stack_t **stack, unsigned int line_count)
                 ;
         if (m < 2)
         {
-                fprintf(stderr, "L%d: can't add, stack too short\n", line_count);
+                fprintf(stderr, "L%d: can't sub, stack too short\n", line_count);
                 free_m();
                 exit(EXIT_FAILURE);
         }
@@ -46,7 +46,7 @@ void mmul(stack_t **stack, unsigned int line_count)
                 ;
         if (m < 2)
         {
-                fprintf(stderr, "L%d: can't add, stack too short\n", line_count);
+                fprintf(stderr, "L%d: can't mul, stack too short\n", line_count);
                 free_m();
                 exit(EXIT_FAILURE);
         }
@@ -64,7 +64,7 @@ void mdiv(stack_t **stack, unsigned int line_count)
                 ;
         if (m < 2)
         {
-                fprintf(stderr, "L%d: can't add, stack too short\n", line_count);
+                fprintf(stderr, "L%d: can't div, stack too short\n", line_count);
                 free_m();
                 exit(EXIT_FAILURE);
         }
@@ -82,7 +82,7 @@ void mmod(stack_t **stack, unsigned int line_count)
                 ;
         if (m < 2)
         {
-                fprintf(stderr, "L%d: can't add, stack too short\n", line_count);
+                fprintf(stderr, "L%d: can't mod, stack too short\n", line_count);
                 free_m();
                 exit(EXIT_FAILURE);
         }
