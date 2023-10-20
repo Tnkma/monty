@@ -75,22 +75,25 @@ int main(int argc, char **argv)
 	while (read != NULL)
 	{
 		token = strtok(fun_var.line, delim);
-		if (!token) /* skip empty lines */
+		if (token[0] != '#')
 		{
-			continue;
+			if (!token) /* skip empty lines */
+			{
+				continue;
+			}
+			f = opcodes(token);
+			if (f == NULL)/* if its not a defined opcode*/
+			{
+				fprintf(stderr,"L%d: unknown instruction %s\n", fun_var.count, token);
+				free_m();
+				exit(EXIT_FAILURE);
+			}
+			if (strcmp(token, "push") == 0)
+			{
+				fun_var.arg = strtok(NULL, delim);
+			}
+			f(&fun_var.head, fun_var.count);
 		}
-		f = opcodes(token);
-		if (f == NULL)/* if its not a defined opcode*/
-		{
-			fprintf(stderr,"L%d: unknown instruction %s\n", fun_var.count, token);
-			free_m();
-			exit(EXIT_FAILURE);
-		}
-		if (strcmp(token, "push") == 0)
-		{
-			fun_var.arg = strtok(NULL, delim);
-		}
-		f(&fun_var.head, fun_var.count);
 		read = fgets(fun_var.line, sizeof(fun_var.line), input);
 		fun_var.count++;
 	}
