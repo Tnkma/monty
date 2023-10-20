@@ -54,7 +54,14 @@ void push(stack_t **stack, unsigned int line_number)
 		}
 	}
 	num = atoi(fun_var.arg);
-	add_dnodeint(stack, num);
+	if (fun_var.check == 1)
+	{
+		add_dnodeint(stack, num);
+	}
+	else
+	{
+		add_dnodeint_end(stack, num);
+	}
 }
 /**
  * pop - removes the first node

@@ -14,6 +14,10 @@ void (*opcodes(char *codes))(stack_t **stack, unsigned int line_number)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"nop", nop},
+		{"swap", swap},
+		{"queue", mqueue},
+		{"stack", mstack},
 		{NULL, NULL}
 	};
 	int m;
@@ -63,6 +67,7 @@ void pall(stack_t **stack, unsigned int line_number)
 
 	if (current == NULL)
 	{
+		free_m();
 		return;
 	}
 	while (current)

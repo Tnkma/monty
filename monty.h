@@ -51,6 +51,7 @@ typedef struct glo
 	unsigned int count;
 	char *arg;
 	stack_t *head;
+	int check;
 	char *line;
 } glo_t;
 
@@ -65,6 +66,10 @@ void free_dlistint(stack_t *head);
 void push(stack_t **stack, unsigned int line_number);
 void free_m(void);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void mstack(stack_t **stack, unsigned int line_number);
+void mqueue(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 
 
 #endif

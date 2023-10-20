@@ -12,6 +12,7 @@ glo_t fun_var;
 void _fun_var(void)
 {
 	fun_var.count = 1;
+	fun_var.check = 1;
 	fun_var.head = NULL;
 	fun_var.arg = NULL;
 	fun_var.line = malloc(1024 * sizeof(char));
