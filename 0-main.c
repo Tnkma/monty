@@ -15,7 +15,7 @@ void _fun_var(void)
 	fun_var.check = 1;
 	fun_var.head = NULL;
 	fun_var.arg = NULL;
-	fun_var.line = malloc(1024 * sizeof(char));
+	fun_var.line = NULL;
 }
 /**
  * free_m - free all
@@ -66,13 +66,14 @@ int main(int argc, char **argv)
 {
 	void (*f)(stack_t **stack, unsigned int line_number);
 	FILE *input;
-	char *read;
+	ssize_t read;
+	size_t len = 0;
 	char *token, *delim = " \t\n";
 
 	input = open_file(argc, argv);
 	_fun_var();
-	read = fgets(fun_var.line, sizeof(fun_var.line), input);
-	while (read != NULL)
+	read = getline(&fun_var.line, &len, input);
+	while (read != -1)
 	{
 		token = strtok(fun_var.line, delim);
 		if (token[0] != '#')
@@ -94,10 +95,10 @@ int main(int argc, char **argv)
 			}
 			f(&fun_var.head, fun_var.count);
 		}
-		read = fgets(fun_var.line, sizeof(fun_var.line), input);
+		read = getline(&fun_var.line, &len, input);
 		fun_var.count++;
 	}
-	fclose(input);
 	free_m();
+	fclose(input);
 	return (0);
 }
