@@ -34,7 +34,7 @@ int is_integer(char *str)
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	int num, i;
+	int num;
 
 
 	if (!fun_var.arg)
@@ -43,15 +43,11 @@ void push(stack_t **stack, unsigned int line_number)
 		free_m();
 		exit(EXIT_FAILURE);
 	}
-
-	for (i = 0; fun_var.arg[i] != '\0'; i++)
+	if (!is_integer(fun_var.arg))
 	{
-		if (!fun_var.arg || !is_integer(fun_var.arg))
-		{
-			fprintf(stderr, "L%d:  usage: push integer", line_number);
-			free_m();
-			exit(EXIT_FAILURE);
-		}
+		fprintf(stderr, "L%d:  usage: push integer", line_number);
+		free_m();
+		exit(EXIT_FAILURE);
 	}
 	num = atoi(fun_var.arg);
 	if (fun_var.check == 1)
