@@ -83,4 +83,31 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 	free(tmp);
 }
+/**
+ * pchar - prints the ascii value of the integer
+ * @stack: the stack
+ * @line_count: used to print the error line
+ *
+ * Return: void since were void
+ */
 
+void pchar(stack_t **stack, unsigned int line_count)
+{
+	stack_t *tmp = *stack;
+	int m = tmp->n;
+
+	if (!tmp)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_count);
+		exit(EXIT_FAILURE);
+	}
+	if (m >= 'a' && m <= 'z' || m >= 'A' && m <= 'Z')
+	{
+		printf("%c\n", m);
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_count);
+		exit(EXIT_FAILURE);
+	}
+}

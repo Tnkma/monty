@@ -2,12 +2,11 @@
 #define MONTY_H
 
 #define _POSIX_C_SOURCE 200809L
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <ctype.h>
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -75,5 +74,6 @@ void msub(stack_t **stack, unsigned int line_count);
 void mdiv(stack_t **stack, unsigned int line_count);
 void mmul(stack_t **stack, unsigned int line_count);
 void mmod(stack_t **stack, unsigned int line_count);
+void pchar(stack_t **stack, unsigned int line_count);
 
 #endif

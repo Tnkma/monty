@@ -23,6 +23,7 @@ void (*opcodes(char *codes))(stack_t **stack, unsigned int line_number)
 		{"div", mdiv},
 		{"mul", mmul},
 		{"mod", mmod},
+		{"pchar", pchar},
 		{NULL, NULL}
 	};
 	int m;
