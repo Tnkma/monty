@@ -76,5 +76,6 @@ void mdiv(stack_t **stack, unsigned int line_count);
 void mmul(stack_t **stack, unsigned int line_count);
 void mmod(stack_t **stack, unsigned int line_count);
 void pchar(stack_t **stack, unsigned int line_count);
+void pstr(stack_t **stack, unsigned int line_count);
 
 #endif

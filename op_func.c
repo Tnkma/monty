@@ -111,3 +111,32 @@ void pchar(stack_t **stack, unsigned int line_count)
 		exit(EXIT_FAILURE);
 	}
 }
+/**
+ * pstr - prints the string starting at the top of the stack
+ * @stack: the top stack
+ * @line_count: the error line counter
+ *
+ * Return: void since we're void
+ */
+void pstr(stack_t **stack, unsigned int line_count)
+{
+	stack_t *tmp = *stack;
+	int m;
+	(void)line_count;
+
+	if (tmp == NULL)
+	{
+		printf("\n");
+		return;
+	}
+	while (tmp != NULL && tmp->n != 0)
+	{
+		m = tmp-> n;
+		if ((m >= 'a' && m <= 'z') || (m >= 'A' && m <= 'Z'))
+		{
+			printf("%c", m);
+		}
+		tmp = tmp->next;
+	}
+	printf("\n");
+}
