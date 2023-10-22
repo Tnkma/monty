@@ -101,7 +101,7 @@ void pchar(stack_t **stack, unsigned int line_count)
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_count);
 		exit(EXIT_FAILURE);
 	}
-	if (m >= 'a' && m <= 'z' || m >= 'A' && m <= 'Z')
+	if ((m >= 'a' && m <= 'z') || (m >= 'A' && m <= 'Z'))
 	{
 		printf("%c\n", m);
 	}
